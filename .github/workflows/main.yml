@@ -14,9 +14,16 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script_stop: true
           script: |
-            cd /home/hamyvosugh/htdocs/www.hamyvosugh.com
-            git pull origin main
-            npm install
-            npm run build
-            pm2 restart next-project
+            echo "Starting deployment..."
+            cd /home/hamyvosugh/htdocs/www.hamyvosugh.com || exit 1
+            echo "Pulling latest changes..."
+            git pull origin main || exit 1
+            echo "Installing dependencies..."
+            npm install || exit 1
+            echo "Building application..."
+            npm run build || exit 1
+            echo "Restarting PM2 process..."
+            pm2 restart next-project || exit 1
+            echo "Deployment completed successfully!"
