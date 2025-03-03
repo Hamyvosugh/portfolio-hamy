@@ -20,7 +20,7 @@ export default function Home() {
             </code>
             .
           </li>
-          <li>it is changed  /// test for auto deploy // after add action </li>
+          <li>it is changed  /// test for auto deploy // after add action 2</li>
         </ol>
 
         <div className="flex gap-4 items-center flex-col sm:flex-row">
