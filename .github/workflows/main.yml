@@ -2,8 +2,9 @@ name: Deploy to Production
 
 on:
   push:
-    branches: [ main ]
-
+    branches: 
+      - main  
+      
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -17,9 +18,10 @@ jobs:
           script_stop: true
           script: |
             echo "Starting deployment..."
-            cd /home/hamyvosugh/htdocs/www.hamyvosugh.com || exit 1
+            cd ${{ secrets.WORK_DIR }} || exit 1
+            echo "Current directory: $(pwd)"
             echo "Pulling latest changes..."
-            git pull origin main || exit 1
+            git pull origin ${{ secrets.MAIN_BRANCH }} || exit 1
             echo "Installing dependencies..."
             npm install || exit 1
             echo "Building application..."
