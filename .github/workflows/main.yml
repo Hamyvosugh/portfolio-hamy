@@ -2,9 +2,9 @@ name: Deploy to Production
 
 on:
   push:
-    branches: 
-      - main  
-      
+    branches:
+      - main
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -15,17 +15,16 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script_stop: true
           script: |
             echo "Starting deployment..."
-            cd ${{ secrets.WORK_DIR }} || exit 1
+            cd ${{ secrets.WORK_DIR }}
             echo "Current directory: $(pwd)"
             echo "Pulling latest changes..."
-            git pull origin ${{ secrets.MAIN_BRANCH }} || exit 1
+            git pull origin ${{ secrets.MAIN_BRANCH }}
             echo "Installing dependencies..."
-            npm install || exit 1
+            npm install
             echo "Building application..."
-            npm run build || exit 1
+            npm run build
             echo "Restarting PM2 process..."
-            pm2 restart next-project || exit 1
+            pm2 restart next-project
             echo "Deployment completed successfully!"
