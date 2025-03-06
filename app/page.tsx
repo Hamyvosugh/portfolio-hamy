@@ -14,7 +14,7 @@ export default function Home() {
         />
         <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
           <li className="mb-2">
-            Hallosss Hamys heres is second  3453453453453452 دستی tests for only npm run build آزمایش ان کت و وب هوک !! add ncat for auto build  {" "}
+            Hallosss Hamys heres is second  3453453453453452  دولاره دستی tests for only npm run build آزمایش ان کت و وب هوک !! add ncat for auto build  {" "}
             <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
               app/page.tsx
             </code>
